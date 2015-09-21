@@ -150,10 +150,6 @@
 }
 %%%%%%%%%%%% END TITLE PAGE %%%%%%%%%%%%%%%%%%
 
-%\frameT{Overview}{
-%	\tableofcontents
-%}
-
 \section{Introduction}
 
 \frameT{Contributions}{
@@ -182,78 +178,6 @@
 \section{Preference Trees}
 
 \subsection{Definition}
-%\frameT{Example: Preferences over Vacations}{
-%	\begin{center}
-%		\tit{activity}: \{water-sports ($x_1$), hiking ($\neg x_1$)\},\\
-%		\tit{destination}: \{Florida ($x_2$), Colorado ($\neg x_2$)\},\\
-%		\tit{time}: \{summer ($x_3$), winter ($\neg x_3$)\},\\
-%		\tit{transportation}: \{car ($x_4$), plane ($\neg x_4$)\}.
-%	\end{center}
-%
-%\vspace{-0.2cm}
-%
-%	\begin{figure}[!ht]
-%	  \centering
-%      \begin{tikzpicture}[->,>=stealth',
-%	      level 1/.style={sibling distance=1.7cm, level distance=33pt},
-%	      level 2/.style={sibling distance=1cm, level distance=27pt}
-%	    ]
-%        \node [main node,inner sep=0pt] (1){$x_1 \!\! \equiv \!\! x_2$}
-%          child {node [main node,inner sep=5pt] (2) {$x_4$}
-%            child {node [rectangle,draw] (3) {}}
-%            child {node [rectangle,draw] (4) {}}
-%                            }
-%          child {node [main node,inner sep=5pt] (5) {$x_4$}
-%            child {node [rectangle,draw] (6) {}
-%                                    }
-%            child {node [rectangle,draw] (7) {}
-%                                    }
-%          };
-%      \end{tikzpicture}
-%	  \caption{A decision tree over vacations}
-%	\end{figure}
-%}
-%
-%\frameT{Example: Preferences over Vacations}{
-%	\begin{center}
-%		\tit{activity}: \{water-sports ($x_1$), hiking ($\neg x_1$)\},\\
-%		\tit{destination}: \{Florida ($x_2$), Colorado ($\neg x_2$)\},\\
-%		\tit{time}: \{summer ($x_3$), winter ($\neg x_3$)\},\\
-%		\tit{transportation}: \{car ($x_4$), plane ($\neg x_4$)\}.
-%	\end{center}
-%
-%\vspace{-0.2cm}
-%
-%	\begin{figure}[!ht]
-%	  \centering
-%      \begin{tikzpicture}[->,>=stealth',
-%	      level 1/.style={sibling distance=1.7cm, level distance=33pt},
-%	      level 2/.style={sibling distance=1cm, level distance=27pt}
-%	    ]
-%        \node [main node,inner sep=0pt] (1){$x_1 \!\! \equiv \!\! x_2$}
-%          child {node [main node,inner sep=5pt] (2) {$x_4$}
-%            child {node [rectangle,draw] (3) {}}
-%            child {node [rectangle,draw] (4) {}}
-%                            }
-%          child {node [main node,inner sep=5pt] (5) {$x_4$}
-%            child {node [rectangle,draw] (6) {}
-%                                    }
-%            child {node [rectangle,draw] (7) {}
-%                                    }
-%          };
-%      \end{tikzpicture}
-%	  \caption{A decision tree over vacations}
-%	\end{figure}
-%
-%\vspace{-0.5cm}
-%
-%	Optimal vacations?
-%	\vspace{-0.4cm}
-%	\begin{center}
-%		$x_1x_2x_3x_4 \approx x_1x_2\neg x_3x_4 \approx \neg x_1 \neg x_2x_3x_4 \approx \neg x_1 \neg x_2\neg x_3x_4$
-%	\end{center}
-%}
-
 \frameT{Preference Trees}{
 	\begin{itemize}
 		\item Let $\cI$ be a set of binary issues. The \tbf{combinatorial domain}
@@ -262,13 +186,13 @@
 		\item A \tbf{P-tree} $T$ over $\CD(\cI)$
 					is a binary tree whose nodes, other than the leaves, are labeled with
 					propositional formulas over $\cI$.
-		\item Given an outcome $M \in \CD(\cI)$, the \tbf{leaf} $l_T(M)$
-					is the leaf reached by traversing the tree $T$ according to $M$.
-					When at a node $N$ labeled with $\varphi$, if $M\models \varphi$,
-					we descend to the left child of $N$; otherwise, to the right.
-		\item For $M, M'\in \CD(\cI)$, we have $M\succ_T M'$ if $l_T(M) \succ_T l_T(M')$,
-					and $M \approx_T M'$ if $l_T(M)=l_T(M')$. Outcome $M$ is \tbf{optimal} if 
-					there exists no $M'$ such that $M' \succ_T M$.
+%		\item Given an outcome $M \in \CD(\cI)$, the \tbf{leaf} $l_T(M)$
+%					is the leaf reached by traversing the tree $T$ according to $M$.
+%					When at a node $N$ labeled with $\varphi$, if $M\models \varphi$,
+%					we descend to the left child of $N$; otherwise, to the right.
+%		\item For $M, M'\in \CD(\cI)$, we have $M\succ_T M'$ if $l_T(M) \succ_T l_T(M')$,
+%					and $M \approx_T M'$ if $l_T(M)=l_T(M')$. Outcome $M$ is \tbf{optimal} if 
+%					there exists no $M'$ such that $M' \succ_T M$.
 	\end{itemize}
 }
 
@@ -289,9 +213,9 @@
 	      level 2/.style={sibling distance=1cm, level distance=27pt}
 	    ]
         \node [main node,inner sep=0pt] (1){$x_1 \!\! \equiv \!\! x_2$}
-          child {node [main node,inner sep=5pt] (2) {$x_4$}
-            child {node [rectangle,draw] (3) {}}
-            child {node [rectangle,draw] (4) {}}
+          child [blue] {node [main node,inner sep=5pt,black] (2) {$x_4$} 
+            child {node [rectangle,draw,fill] (3) {}}
+            child [black] {node [rectangle,draw] (4) {}}
                             }
           child {node [main node,inner sep=5pt] (5) {$x_4$}
             child {node [rectangle,draw] (6) {}
@@ -329,14 +253,14 @@
 	      level 2/.style={sibling distance=1cm, level distance=27pt}
 	    ]
         \node [main node,inner sep=0pt] (1){$x_1 \!\! \equiv \!\! x_2$}
-          child {node [main node,inner sep=5pt] (2) {$x_4$}
-            child {node [rectangle,draw] (3) {}}
+          child [red] {node [main node,inner sep=5pt,black] (2) {$x_4$}
+            child [black] {node [rectangle,draw] (3) {}}
             child {node [rectangle,draw] (4) {}}
                             }
-          child {node [main node,inner sep=5pt] (5) {$x_4$}
+          child [green] {node [main node,inner sep=5pt,black] (5) {$x_4$}
             child {node [rectangle,draw] (6) {}
                                     }
-            child {node [rectangle,draw] (7) {}
+            child [black] {node [rectangle,draw] (7) {}
                                     }
           };
       \end{tikzpicture}
@@ -348,49 +272,9 @@
 	Preferences:
 	\vspace{-0.4cm}
 	\begin{center}
-		$\neg x_1 \neg x_2x_3\neg x_4 \succ x_1 \neg x_2x_3x_4 \succ \neg x_1x_2\neg x_3\neg x_4$
+		$\textcolor{red}{\neg x_1 \neg x_2x_3\neg x_4} \succ \textcolor{green}{x_1 \neg x_2x_3x_4}$
 	\end{center}
 }
-
-%\frameT{Preference Trees: Example}{
-%	\begin{center}
-%		$\vph_1=x_1 \lor x_3$, $\vph_2 =x_1 \land \neg x_2$, \\ 
-%		$\vph_3= (x_3 \rightarrow x_4) \lor (\neg x_3 \rightarrow \neg x_4)$.
-%	\end{center}
-%
-%	\vspace{-0.7cm}
-%
-%	\begin{figure}
-%	  \centering
-%	    \begin{tikzpicture}[->,>=stealth',
-%	      level 1/.style={sibling distance=2cm, level distance=27pt},
-%	      level 2/.style={sibling distance=1.5cm, level distance=27pt},
-%	      level 3/.style={sibling distance=1cm, level distance=27pt}
-%				]
-%	      \node [main node,inner sep=1.7pt] (1){$\varphi_1$}
-%	        child {node [main node,inner sep=1.7pt] (2) {$\varphi_2$}
-%	          child {node [main node,inner sep=1.7pt] (3) {$\varphi_3$}
-%	            child {node [rectangle,draw] (4) {}}
-%	            child {node [rectangle,draw] (5) {}}
-%           }
-%           child {node [main node,inner sep=1.7pt] (6) {$\varphi_3$}
-%	            child {node [rectangle,draw] (7) {}}
-%	            child {node [rectangle,draw] (8) {}}
-%	          }
-%	        }
-%%	        child [empty] {}
-%	        child {node [rectangle,draw] (9) {}}
-%	        ;
-%	    \end{tikzpicture}
-%	  \caption{P-trees}
-%	\end{figure}
-%
-%	\vspace{-0.5cm}
-%
-%	For outcomes $M=(x_1,x_2,\neg x_3,\neg x_4)$, $M'=(\neg x_1,x_2,x_3,x_4)$,
-%	and $M''=(\neg x_1,\neg x_2,x_3,\neg x_4)$,
-%	we have $l_T(M)=l_T(M')=l_3$ and $l_T(M'')=l_4$, so $M \approx_T M' \succ_T M''$.
-%}
 
 \frameT{Compact Representation of P-trees}{
 	A \tit{compact P-tree over $\CD(\cI)$} is a tree where
@@ -409,116 +293,6 @@
 	  \caption{Compact P-trees}
 	\end{figure}
 }
-%
-%\frameT{Compact Representation of P-trees}{
-%	\begin{center}
-%		$\vph_1=x_1 \lor x_3$, $\vph_2 =x_1 \land \neg x_2$, \\ 
-%		$\vph_3= (x_3 \rightarrow x_4) \lor (\neg x_3 \rightarrow \neg x_4)$, \\
-%		$\vph_4=x_2 \land x_4$.
-%	\end{center}
-%
-%	\vspace{-0.7cm}
-%
-%	\begin{figure}
-%	  \centering
-%	  \subfigure[Full]{
-%	    \centering
-%	    \begin{tikzpicture}[->,>=stealth',
-%	      level 1/.style={sibling distance=2cm, level distance=27pt},
-%	      level 2/.style={sibling distance=1.5cm, level distance=27pt},
-%	      level 3/.style={sibling distance=1cm, level distance=27pt}
-%				]
-%	      \node [main node,inner sep=1.7pt] (1){$\varphi_1$}
-%	        child {node [main node,inner sep=1.7pt] (2) {$\varphi_2$}
-%	          child {node [main node,inner sep=1.7pt] (3) {$\varphi_3$}
-%	            child {node [rectangle,draw] (4) {}}
-%	            child {node [rectangle,draw] (5) {}}
-%           }
-%           child {node [main node,inner sep=1.7pt] (6) {$\varphi_3$}
-%	            child {node [rectangle,draw] (7) {}}
-%	            child {node [rectangle,draw] (8) {}}
-%	          }
-%	        }
-%					child {node [main node,inner sep=1.7pt] (9) {$\varphi_4$}
-%		      	child {node [rectangle,draw] (10) {}
-%						}
-%		      	child {node [rectangle,draw] (11) {}
-%						}
-%	        };
-%	    \end{tikzpicture}
-%	  }
-%	  \subfigure[Compact]{
-%			\hspace{0.4cm}
-%	    \begin{tikzpicture}[->,>=stealth',
-%	      level/.style={sibling distance=2cm, level distance=27pt}]
-%	      \node [main node,inner sep=1.7pt] (1){$\varphi_1$}
-%	        child {node [main node,inner sep=1.7pt] (2) {$\varphi_2$}
-%	          child {node [main node,inner sep=1.7pt] (3) {$\varphi_3$}
-%	        		child [empty] {}
-%	          }
-%	        }
-%					child {node [main node,inner sep=1.7pt] (5) {$\varphi_4$}
-%					}
-%	        ;
-%	    \end{tikzpicture}
-%	  }
-%	  \caption{P-trees}
-%	\vspace{-0.2cm}
-%	  \label{fig:PTree}
-%	\end{figure}
-%}
-%
-%\frameT{Compact Representation of P-trees}{
-%	\begin{center}
-%		$\vph_1=x_1 \lor x_3$, $\vph_2 =x_1 \land \neg x_2$, \\ $\vph_3= (x_3 \rightarrow x_4) \lor (\neg x_3 \rightarrow \neg x_4)$.
-%	\end{center}
-%
-%	\vspace{-0.7cm}
-%
-%	\begin{figure}
-%	  \centering
-%	  \subfigure[Full]{
-%	    \centering
-%	    \begin{tikzpicture}[->,>=stealth',
-%	      level 1/.style={sibling distance=2cm, level distance=27pt},
-%	      level 2/.style={sibling distance=1.5cm, level distance=27pt},
-%	      level 3/.style={sibling distance=1cm, level distance=27pt}
-%				]
-%	      \node [main node,inner sep=1.7pt] (1){$\varphi_1$}
-%	        child {node [main node,inner sep=1.7pt] (2) {$\varphi_2$}
-%	          child {node [main node,inner sep=1.7pt] (3) {$\varphi_3$}
-%	            child {node [rectangle,draw] (4) {}}
-%	            child {node [rectangle,draw] (5) {}}
-%           }
-%           child {node [main node,inner sep=1.7pt] (6) {$\varphi_3$}
-%	            child {node [rectangle,draw] (7) {}}
-%	            child {node [rectangle,draw] (8) {}}
-%	          }
-%	        }
-%%	        child [empty] {}
-%	        child {node [rectangle,draw] (9) {}}
-%	        ;
-%	    \end{tikzpicture}
-%	  }
-%	  \subfigure[Compact]{
-%			\hspace{0.4cm}
-%	    \begin{tikzpicture}[->,>=stealth',
-%	      level/.style={sibling distance=2cm, level distance=27pt}]
-%	      \node [main node,inner sep=1.7pt] (1){$\varphi_1$}
-%	        child {node [main node,inner sep=1.7pt] (2) {$\varphi_2$}
-%	          child {node [main node,inner sep=1.7pt] (3) {$\varphi_3$}
-%	        		child [empty] {}
-%	          }
-%	        }
-%	        child [empty] {
-%	        };
-%	    \end{tikzpicture}
-%	  }
-%	  \caption{P-trees}
-%	\vspace{-0.2cm}
-%	  \label{fig:PTree}
-%	\end{figure}
-%}
 
 \frameT{Compact Representation of P-trees}{
 	\begin{center}
@@ -656,35 +430,29 @@
 %
 %}
 
-\frameT{Example ASO-rule over Vacations}{
-	\begin{center}
-		\tit{activity}: \{water-sports ($x_1$), hiking ($\neg x_1$)\},\\
-		\tit{destination}: \{Florida ($x_2$), Colorado ($\neg x_2$)\},\\
-		\tit{time}: \{summer ($x_3$), winter ($\neg x_3$)\},\\
-		\tit{transportation}: \{car ($x_4$), plane ($\neg x_4$)\}.
-	\end{center}
-
-\vspace{-0.2cm}
-
-	\begin{center}
-		$r:\,\,x_1 \equiv x_2 > x_3 > x_2 \leftarrow$.
-	\end{center}
-
-	We have the following preferences:
-	%\begin{center}
-	%	$x_1x_2x_3x_4 \approx_r \neg x_1\neg x_2x_3x_4$,\\
-	%	$x_1x_2x_3x_4 \succ_r x_1\neg x_2x_3\neg x_4$,\\
-	%	$\neg x_1x_2x_3x_4 \succ_r \neg x_1x_2\neg x_3x_4$,\\
-	%	$\neg x_1x_2\neg x_3\neg x_4 \succ_r x_1\neg x_2\neg x_3x_4$.
-	%\end{center}
-
-	\begin{center}
-		$\SD_r(x_1x_2x_3x_4)=\SD_r(\neg x_1\neg x_2x_3x_4)=1$:\\
-		$x_1x_2x_3x_4 \approx_r \neg x_1\neg x_2x_3x_4$.\\
-		$\SD_r(\neg x_1x_2\neg x_3\neg x_4)=3$, $\SD_r(x_1\neg x_2\neg x_3x_4)=4$:\\
-		$\neg x_1x_2\neg x_3\neg x_4 \succ_r x_1\neg x_2\neg x_3x_4$.
-	\end{center}
-}
+%\frameT{Example ASO-rule over Vacations}{
+%	\begin{center}
+%		\tit{activity}: \{water-sports ($x_1$), hiking ($\neg x_1$)\},\\
+%		\tit{destination}: \{Florida ($x_2$), Colorado ($\neg x_2$)\},\\
+%		\tit{time}: \{summer ($x_3$), winter ($\neg x_3$)\},\\
+%		\tit{transportation}: \{car ($x_4$), plane ($\neg x_4$)\}.
+%	\end{center}
+%
+%\vspace{-0.2cm}
+%
+%	\begin{center}
+%		$r:\,\,x_1 \equiv x_2 > x_3 > x_2 \leftarrow$.
+%	\end{center}
+%
+%	We have the following preferences:
+%
+%	\begin{center}
+%		$\SD_r(x_1x_2x_3x_4)=\SD_r(\neg x_1\neg x_2x_3x_4)=1$:\\
+%		$x_1x_2x_3x_4 \approx_r \neg x_1\neg x_2x_3x_4$.\\
+%		$\SD_r(\neg x_1x_2\neg x_3\neg x_4)=3$, $\SD_r(x_1\neg x_2\neg x_3x_4)=4$:\\
+%		$\neg x_1x_2\neg x_3\neg x_4 \succ_r x_1\neg x_2\neg x_3x_4$.
+%	\end{center}
+%}
 
 \frameT{From ASO-Rules to P-Trees}{
 	From the ASO-rule $r$, we build a P-tree $T_r$,
@@ -781,71 +549,33 @@
 %
 %}
 
-\frameT{Example ASO-theory over Vacations}{
-	\begin{center}
-		\tit{activity}: \{water-sports ($x_1$), hiking ($\neg x_1$)\},\\
-		\tit{destination}: \{Florida ($x_2$), Colorado ($\neg x_2$)\},\\
-		\tit{time}: \{summer ($x_3$), winter ($\neg x_3$)\},\\
-		\tit{transportation}: \{car ($x_4$), plane ($\neg x_4$)\}.
-	\end{center}
-
-\vspace{-0.2cm}
-
-\begin{equation*}
-\hspace{3.2cm}
-\Phi =
-\begin{cases}
-r_1:\,\,x_1 \equiv x_2 > x_3 \overset{1}{\leftarrow},
-\\
-r_2:\,\,x_4 \land x_2 > x_4 \land \neg x_2 \overset{2}{\leftarrow}.
-\end{cases}
-\end{equation*}
-
-	We have the following preferences:
-	\begin{center}
-		$\SD_\Phi(x_1x_2\neg x_3x_4)=[1,1]$, $\SD_\Phi(\neg x_1\neg x_2x_3\neg x_4)=[1,3]$:\\
-		$x_1x_2\neg x_3x_4 \succ_\Phi \neg x_1\neg x_2\neg x_3x_4$.
-	\end{center}
-}
-
-%\frameT{From P-trees to ASO-Theories}{
-%	\begin{figure}
-%	  \centering
-%	  \subfigure[P-tree $T$]{
-%	    \centering
-%	    \begin{tikzpicture}[->,>=stealth',
-%	      level/.style={sibling distance=2cm, level distance=27pt}]
-%	      \node [main node,inner sep=1.7pt] (1){$\varphi_1$}
-%	        child {node [main node,inner sep=1.7pt] (2) {$\varphi_2$}
-%	          child {node [main node,inner sep=1.7pt] (3) {$\varphi_3$}
-%	          }
-%	        }
-%	        child {node [main node,inner sep=1.7pt] (5) {$\varphi_4$}
-%	        };
-%	    \end{tikzpicture}
-%	  }
-%		\subfigure[RASO-theory $\Phi_T$]{
-%			\begin{tikzpicture}[->,>=stealth,node distance=0.5cm,main node/.style={rectangle,font=\small}]
-%		    \node[main node] (1) {$x_1 \vee x_3 \overset{1}{\leftarrow}$};
-%		    \node[main node] (2) [below of=1] {$x_1 \land \neg x_2 \overset{2}{\leftarrow} x_1 \vee x_3$};
-%		    \node[main node] (3) [below of=2] {$x_2 \land x_4 \overset{2}{\leftarrow} \neg (x_1 \vee x_3)$};
-%		    \node[main node] (4) [below of=3] {$(x_3 \rightarrow x_4) \lor (\neg x_3 \rightarrow \neg x_4) \overset{3}{\leftarrow} x_1 \vee x_3$};
-%		    \node[main node] at (0,-2) {};
-%		  \end{tikzpicture}
-%		}
-%	  \caption{P-trees}
-%	\end{figure}
+%\frameT{Example ASO-theory over Vacations}{
+%	\begin{center}
+%		\tit{activity}: \{water-sports ($x_1$), hiking ($\neg x_1$)\},\\
+%		\tit{destination}: \{Florida ($x_2$), Colorado ($\neg x_2$)\},\\
+%		\tit{time}: \{summer ($x_3$), winter ($\neg x_3$)\},\\
+%		\tit{transportation}: \{car ($x_4$), plane ($\neg x_4$)\}.
+%	\end{center}
 %
-%	\vspace{-0.5cm}
+%\vspace{-0.2cm}
 %
-%	\begin{thm}
-%		Given a P-tree $T$, there exists an RASO-theory $\Phi_T$ of size
-%		polynomial in the size of $T$ such that for every two outcomes $M$ and $M'$
-%		\begin{center}
-%			$M \succeq_{\Phi_T}^{\tit{RASO}} M' \;\; \tit{iff} \;\; M \succeq_{T} M'$
-%		\end{center}
-%	\end{thm}
+%\begin{equation*}
+%\hspace{3.2cm}
+%\Phi =
+%\begin{cases}
+%r_1:\,\,x_1 \equiv x_2 > x_3 \overset{1}{\leftarrow},
+%\\
+%r_2:\,\,x_4 \land x_2 > x_4 \land \neg x_2 \overset{2}{\leftarrow}.
+%\end{cases}
+%\end{equation*}
+%
+%	We have the following preferences:
+%	\begin{center}
+%		$\SD_\Phi(x_1x_2\neg x_3x_4)=[1,1]$, $\SD_\Phi(\neg x_1\neg x_2x_3\neg x_4)=[1,3]$:\\
+%		$x_1x_2\neg x_3x_4 \succ_\Phi \neg x_1\neg x_2\neg x_3x_4$.
+%	\end{center}
 %}
+%
 
 \frameT{From P-trees to ASO-Theories}{
 	\begin{figure}
@@ -984,6 +714,10 @@ r_2:\,\,x_4 \land x_2 > x_4 \land \neg x_2 \overset{2}{\leftarrow}.
 }
 
 \frameT{Computational Complexity Results}{
+	{\sc DomTest}: is it that $o_1 \succeq_T o_2$ in P-tree $T$?\\
+	{\sc OptTest}: is outcome $o$ optimal w.r.t $T$?\\
+	{\sc OptProp}: is there an optimal outcome $o$ w.r.t $T$ st $o \models \alpha$?
+	
 	\begin{figure}
 		\centering
 
