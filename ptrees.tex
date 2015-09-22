@@ -196,45 +196,37 @@
 	\end{itemize}
 }
 
-%\frameT{Example: Preferences over Vacations}{
-%	\begin{center}
-%		\tit{activity}: \{water-sports ($x_1$), hiking ($\neg x_1$)\},\\
-%		\tit{destination}: \{Florida ($x_2$), Colorado ($\neg x_2$)\},\\
-%		\tit{time}: \{summer ($x_3$), winter ($\neg x_3$)\},\\
-%		\tit{transportation}: \{car ($x_4$), plane ($\neg x_4$)\}.
-%	\end{center}
-%
-%\vspace{-0.2cm}
-%
-%	\begin{figure}[!ht]
-%	  \centering
-%      \begin{tikzpicture}[->,>=stealth',
-%	      level 1/.style={sibling distance=1.7cm, level distance=33pt},
-%	      level 2/.style={sibling distance=1cm, level distance=27pt}
-%	    ]
-%        \node [main node,inner sep=0pt] (1){$x_1 \!\! \equiv \!\! x_2$}
-%          child [blue] {node [main node,inner sep=5pt,black] (2) {$x_4$} 
-%            child {node [rectangle,draw,fill] (3) {}}
-%            child [black] {node [rectangle,draw] (4) {}}
-%                            }
-%          child {node [main node,inner sep=5pt] (5) {$x_4$}
-%            child {node [rectangle,draw] (6) {}
-%                                    }
-%            child {node [rectangle,draw] (7) {}
-%                                    }
-%          };
-%      \end{tikzpicture}
-%	  \caption{A P-tree over vacations}
-%	\end{figure}
-%
-%\vspace{-0.5cm}
-%
-%	Optimal vacations:
-%	\vspace{-0.4cm}
-%	\begin{center}
-%		$x_1x_2x_3x_4 \approx x_1x_2\neg x_3x_4 \approx \neg x_1 \neg x_2x_3x_4 \approx \neg x_1 \neg x_2\neg x_3x_4$
-%	\end{center}
-%}
+\frameT{Example: Preferences over Vacations}{
+	\begin{center}
+		\tit{activity}: \{water-sports ($x_1$), hiking ($\neg x_1$)\},\\
+		\tit{destination}: \{Florida ($x_2$), Colorado ($\neg x_2$)\},\\
+		\tit{time}: \{summer ($x_3$), winter ($\neg x_3$)\},\\
+		\tit{transportation}: \{car ($x_4$), plane ($\neg x_4$)\}.
+	\end{center}
+
+\vspace{-0.2cm}
+
+	\begin{figure}[!ht]
+	  \centering
+      \begin{tikzpicture}[->,>=stealth',
+	      level 1/.style={sibling distance=1.7cm, level distance=33pt},
+	      level 2/.style={sibling distance=1cm, level distance=27pt}
+	    ]
+        \node [main node,inner sep=0pt] (1){$x_1 \!\! \equiv \!\! x_2$}
+          child {node [main node,inner sep=5pt] (2) {$x_4$}
+            child {node [rectangle,draw] (3) {}}
+            child {node [rectangle,draw] (4) {}}
+                            }
+          child {node [main node,inner sep=5pt] (5) {$x_4$}
+            child {node [rectangle,draw] (6) {}
+                                    }
+            child {node [rectangle,draw] (7) {}
+                                    }
+          };
+      \end{tikzpicture}
+	  \caption{A P-tree over vacations}
+	\end{figure}
+}
 
 \frameT{Example: Preferences over Vacations}{
 	\begin{center}
@@ -274,24 +266,6 @@
 	\begin{center}
 		$\textcolor{red}{\neg x_1 \neg x_2x_3\neg x_4} \succ \textcolor{green}{x_1 \neg x_2x_3x_4}$
 	\end{center}
-}
-
-\frameT{Compact Representation of P-trees}{
-	A \tit{compact P-tree over $\CD(\cI)$} is a tree where
-	\begin{enumerate}
-		\setlength\itemsep{0em}
-		\item every node is labeled with a Boolean formula over $\cI$, and
-	  \item every non-leaf node $t$ labeled with $\varphi$ has either
-	        two outgoing edges (Figure (a)), or one 
-	    		outgoing edge pointing straight-down (Figure (b)),
-					left (Figure (c)), or right (Figure (d)).
-	\end{enumerate}
-	
-	\begin{figure}[ht!]
-	  \centering
-	    \includegraphics[width=0.9\textwidth]{figs/ptrees.png}
-	  \caption{Compact P-trees}
-	\end{figure}
 }
 
 \frameT{Compact Representation of P-trees}{
@@ -388,6 +362,24 @@
 	    \end{tikzpicture}
 	  }
 	\caption{Compact P-trees}
+	\end{figure}
+}
+
+\frameT{Compact Representation of P-trees}{
+	A \tit{compact P-tree over $\CD(\cI)$} is a tree where
+	\begin{enumerate}
+		\setlength\itemsep{0em}
+		\item every node is labeled with a Boolean formula over $\cI$, and
+	  \item every non-leaf node $t$ labeled with $\varphi$ has either
+	        two outgoing edges (Figure (a)), or one 
+	    		outgoing edge pointing straight-down (Figure (b)),
+					left (Figure (c)), or right (Figure (d)).
+	\end{enumerate}
+	
+	\begin{figure}[ht!]
+	  \centering
+	    \includegraphics[width=0.9\textwidth]{figs/ptrees.png}
+	  \caption{Compact P-trees}
 	\end{figure}
 }
 

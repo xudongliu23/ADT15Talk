@@ -1,0 +1,48 @@
+P1:
+Hi everyone.  Thanks for coming.  My name is Xudong.  I am a phd student in computer science from the U of K.
+I would like to talk about my paper, coauthored with my phd advisor Dr. T, on reasoning with preference trees.
+
+P2:
+Over 2 decades ago, professor Fraser proposed the pref language of pref trees.  In our work,
+we gave an alternative definition of it, for which we call P-trees.  And we formally
+discussed their compact representations.
+Besides, we studied the relations between P-trees and other preference systems.
+Finally, we studied decision problems when preferences are described as P-trees,
+and showed complexity results we obtained.
+
+P3:
+So, what is a preference tree?
+We have a set of binary variables or issues.  We define the comb domain as the set of
+all combinations of values from the domains of the binary issues.
+These combinations are essentially truth assignment over the issues.
+A P-tree is then simply a binary tree where non-leaf nodes are labeled with
+propositional formulas.  Now, let's see an example of P-trees.
+
+P4:
+Here we are given a set of 4 binary issues: activity, destination, time and
+transportation, each with a binary domain.  For instance, activity has values
+ws, represented by x_1, and hiking, represented by \not x_1.
+The domain of outcomes or vacations is the set of all possible combinations or truth
+assignments, and there are 16 of them.
+Now, let's see a P-tree that specifies preferences over these vacations.
+This P-tree is a binary tree with 3 formulas labeling its non-leaf nodes.
+So how do we leverage the tree structure and the formula labels to order outcomes?
+Intuitively, formulas closer to the root are more important.
+The tree basically tells us the importance levels of these considerations.
+Then, formula are used to partition outcomes into more preferred ones, those satisfying
+the formula, and less preferred ones, those dissatisfying it.
+Looking at the formula labeling the root, x_1 equiv to x_2, 
+it means that, among all vacations, the ones that have ws in FL or hiking in CO are
+preferred to the others.  By our convention, the left subtree specifies the preferences
+over those outcomes sating the formula, whereas the right subtree over those faling it. 
+Thus, given a P-tree and an outcome, one can compute its leaf following some path from
+the root.  We then carry over the order of the leaves to define the preferences among outcomes.
+
+P5:
+For example, say we are given two vacations: red and green.
+For red, we see that it sats the root label, thus we go to the left subtree, where we
+see that it fals that label, thus we go the right and reach its leaf.
+This leaf represents the cluster of outcomes that sat the conj of all formulas labeling the
+nodes along that path.
+Similarly, we compute and see the green leaf is the leaf of the green vacation.
+As the red leaf precedes the green one in the P-tree, we have that red is preferred to green.
