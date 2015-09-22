@@ -196,45 +196,45 @@
 	\end{itemize}
 }
 
-\frameT{Example: Preferences over Vacations}{
-	\begin{center}
-		\tit{activity}: \{water-sports ($x_1$), hiking ($\neg x_1$)\},\\
-		\tit{destination}: \{Florida ($x_2$), Colorado ($\neg x_2$)\},\\
-		\tit{time}: \{summer ($x_3$), winter ($\neg x_3$)\},\\
-		\tit{transportation}: \{car ($x_4$), plane ($\neg x_4$)\}.
-	\end{center}
-
-\vspace{-0.2cm}
-
-	\begin{figure}[!ht]
-	  \centering
-      \begin{tikzpicture}[->,>=stealth',
-	      level 1/.style={sibling distance=1.7cm, level distance=33pt},
-	      level 2/.style={sibling distance=1cm, level distance=27pt}
-	    ]
-        \node [main node,inner sep=0pt] (1){$x_1 \!\! \equiv \!\! x_2$}
-          child [blue] {node [main node,inner sep=5pt,black] (2) {$x_4$} 
-            child {node [rectangle,draw,fill] (3) {}}
-            child [black] {node [rectangle,draw] (4) {}}
-                            }
-          child {node [main node,inner sep=5pt] (5) {$x_4$}
-            child {node [rectangle,draw] (6) {}
-                                    }
-            child {node [rectangle,draw] (7) {}
-                                    }
-          };
-      \end{tikzpicture}
-	  \caption{A P-tree over vacations}
-	\end{figure}
-
-\vspace{-0.5cm}
-
-	Optimal vacations:
-	\vspace{-0.4cm}
-	\begin{center}
-		$x_1x_2x_3x_4 \approx x_1x_2\neg x_3x_4 \approx \neg x_1 \neg x_2x_3x_4 \approx \neg x_1 \neg x_2\neg x_3x_4$
-	\end{center}
-}
+%\frameT{Example: Preferences over Vacations}{
+%	\begin{center}
+%		\tit{activity}: \{water-sports ($x_1$), hiking ($\neg x_1$)\},\\
+%		\tit{destination}: \{Florida ($x_2$), Colorado ($\neg x_2$)\},\\
+%		\tit{time}: \{summer ($x_3$), winter ($\neg x_3$)\},\\
+%		\tit{transportation}: \{car ($x_4$), plane ($\neg x_4$)\}.
+%	\end{center}
+%
+%\vspace{-0.2cm}
+%
+%	\begin{figure}[!ht]
+%	  \centering
+%      \begin{tikzpicture}[->,>=stealth',
+%	      level 1/.style={sibling distance=1.7cm, level distance=33pt},
+%	      level 2/.style={sibling distance=1cm, level distance=27pt}
+%	    ]
+%        \node [main node,inner sep=0pt] (1){$x_1 \!\! \equiv \!\! x_2$}
+%          child [blue] {node [main node,inner sep=5pt,black] (2) {$x_4$} 
+%            child {node [rectangle,draw,fill] (3) {}}
+%            child [black] {node [rectangle,draw] (4) {}}
+%                            }
+%          child {node [main node,inner sep=5pt] (5) {$x_4$}
+%            child {node [rectangle,draw] (6) {}
+%                                    }
+%            child {node [rectangle,draw] (7) {}
+%                                    }
+%          };
+%      \end{tikzpicture}
+%	  \caption{A P-tree over vacations}
+%	\end{figure}
+%
+%\vspace{-0.5cm}
+%
+%	Optimal vacations:
+%	\vspace{-0.4cm}
+%	\begin{center}
+%		$x_1x_2x_3x_4 \approx x_1x_2\neg x_3x_4 \approx \neg x_1 \neg x_2x_3x_4 \approx \neg x_1 \neg x_2\neg x_3x_4$
+%	\end{center}
+%}
 
 \frameT{Example: Preferences over Vacations}{
 	\begin{center}
@@ -255,10 +255,10 @@
         \node [main node,inner sep=0pt] (1){$x_1 \!\! \equiv \!\! x_2$}
           child [red] {node [main node,inner sep=5pt,black] (2) {$x_4$}
             child [black] {node [rectangle,draw] (3) {}}
-            child {node [rectangle,draw] (4) {}}
+            child {node [rectangle,draw,fill] (4) {}}
                             }
           child [green] {node [main node,inner sep=5pt,black] (5) {$x_4$}
-            child {node [rectangle,draw] (6) {}
+            child {node [rectangle,draw,fill] (6) {}
                                     }
             child [black] {node [rectangle,draw] (7) {}
                                     }
@@ -337,6 +337,57 @@
       \end{tikzpicture}
 			\hspace{0.5cm}
 	  }
+	\caption{Compact P-trees}
+	\end{figure}
+}
+
+\frameT{Compact Representation of P-trees}{
+	\begin{center}
+		$\vph_1=x_1 \lor x_3$, $\vph_2 =x_1 \land \neg x_2$, \\ $\vph_3= (x_3 \rightarrow x_4) \lor (\neg x_3 \rightarrow \neg x_4)$.
+	\end{center}
+
+	\vspace{-0.7cm}
+
+	\begin{figure}
+	  \centering
+	  \subfigure[Full]{
+	    \centering
+	    \begin{tikzpicture}[->,>=stealth',
+	      level 1/.style={sibling distance=2cm, level distance=27pt},
+	      level 2/.style={sibling distance=1.5cm, level distance=27pt},
+	      level 3/.style={sibling distance=1cm, level distance=27pt}
+				]
+	      \node [main node,inner sep=1.7pt] (1){$\varphi_1$}
+	        child {node [main node,inner sep=1.7pt] (2) {$\varphi_2$}
+	          child {node [main node,inner sep=1.7pt] (3) {$\varphi_3$}
+	            child {node [rectangle,draw] (4) {}}
+	            child {node [rectangle,draw] (5) {}}
+           }
+           child {node [main node,inner sep=1.7pt] (6) {$\varphi_3$}
+	            child {node [rectangle,draw] (7) {}}
+	            child {node [rectangle,draw] (8) {}}
+	          }
+	        }
+%	        child [empty] {}
+	        child {node [rectangle,draw] (9) {}}
+	        ;
+	    \end{tikzpicture}
+	  }
+	  \subfigure[Compact]{
+			\hspace{0.4cm}
+	    \begin{tikzpicture}[->,>=stealth',
+	      level/.style={sibling distance=2cm, level distance=27pt}]
+	      \node [main node,inner sep=1.7pt] (1){$\varphi_1$}
+	        child {node [main node,inner sep=1.7pt] (2) {$\varphi_2$}
+	          child {node [main node,inner sep=1.7pt] (3) {$\varphi_3$}
+	        		child [empty] {}
+	          }
+	        }
+	        child [empty] {
+	        };
+	    \end{tikzpicture}
+	  }
+	\caption{Compact P-trees}
 	\end{figure}
 }
 
@@ -397,7 +448,7 @@
 			  \end{tikzpicture}
 				\hspace{0.5cm}
 			}
-	  \caption{P-trees extend LP-trees}
+	  \caption{P-trees embed LP-trees}
 	\end{figure}
 	\footnotetext{\tiny{$\varphi=(x_2 \rightarrow x_4) \vee (\neg x_2 
 								\rightarrow \neg x_4)$}}
@@ -482,15 +533,16 @@
 					};
 		  \end{tikzpicture}
 		}
+	\caption{P-trees embed ASO-rules}
 	\end{figure}
 	\vspace{-0.5cm}
 
 	\begin{thm}
 		Given an ASO-rule $r$, there exists a P-tree $T_r$ of size
-		polynomial in the size of $r$ such that for every two outcomes $M$ and $M'$
+		polynomial in the size of $r$ such that for every two outcomes $o$ and $o'$
 			\vspace{-0.2cm}
 		\begin{center}
-			$M \succeq_r M' \;\; \tit{iff} \;\; M \succeq_{T_r} M'$
+			$o \succeq_r o' \;\; \tit{iff} \;\; o \succeq_{T_r} o'$
 		\end{center}
 	\end{thm}
 }
@@ -599,16 +651,16 @@
 		  \end{tikzpicture}
 			\hspace{0.5cm}
 		}
-	  \caption{P-trees}
+	\caption{ASO-theories embed P-trees}
 	\end{figure}
 
 	\vspace{-0.5cm}
 
 	\begin{thm}
 		Given a P-tree $T$, there exists an ASO-theory $\Phi_T$ of size
-		polynomial in the size of $T$ such that for every two outcomes $M$ and $M'$
+		polynomial in the size of $T$ such that for every two outcomes $o$ and $o'$
 		\begin{center}
-			$M \succeq_{\Phi_T} M' \;\; \tit{iff} \;\; M \succeq_{T} M'$
+			$o \succeq_{\Phi_T} o' \;\; \tit{iff} \;\; o \succeq_{T} o'$
 		\end{center}
 	\end{thm}
 }
@@ -671,20 +723,21 @@
 					};
 		  \end{tikzpicture}
 		}
+	\caption{P-trees embed Poss-theories}
 	\end{figure}
 	\vspace{-0.6cm}
 	\begin{thm}
 		Given a possibilistic theory $\Pi$, the P-tree $T_\Pi$ is built in time
-		polynomial in the size of $\Pi$ such that for every two outcomes $M$ and $M'$
+		polynomial in the size of $\Pi$ such that for every two outcomes $o$ and $o'$
 		\begin{center}
-			$M \succeq_\Pi^{\tit{Poss}} M' \;\; \tit{iff} \;\; M \succeq_{T_\Pi} M'$
+			$o \succeq_\Pi^{\tit{Poss}} o' \;\; \tit{iff} \;\; o \succeq_{T_\Pi} o'$
 		\end{center}
 	\end{thm}
 }
 
-\frameT{Expressivity of P-Trees}{
+\frameT{Relative Expressivity of Preference Languages}{
 	\begin{center}
-		ASO-rules = Poss-theories $\subset$ \dual{LP-trees/\dual{$\cap$/P-trees}} $\subset$ ASO-theories
+		Poss-theories = ASO-rules $\subset$ \dual{LP-trees/\dual{$\cap$/P-trees}} $\subset$ ASO-theories
 	\end{center}
 }
 
@@ -694,14 +747,14 @@
 \frameT{Decision Problems}{
 	\begin{block}{Dominance-testing ({\sc DomTest})}
 		Given a P-tree $T$ and its two distinct outcomes
-		$M$ and $M'$, decide whether $M' \succeq_T M$.
+		$o$ and $o'$, decide whether $o' \succeq_T o$.
 	\end{block}
 	
 	\vspace{0.05cm}
 	
 	\begin{block}{Optimality-testing ({\sc OptTest})}
-		Given a P-tree $T$ and an outcome $M$,
-		decide whether $M$ is an optimal outcome with respect to $T$.
+		Given a P-tree $T$ and an outcome $o$,
+		decide whether $o$ is an optimal outcome with respect to $T$.
 	\end{block}
 	
 	\vspace{0.05cm}
@@ -714,7 +767,7 @@
 }
 
 \frameT{Computational Complexity Results}{
-	{\sc DomTest}: is it that $o_1 \succeq_T o_2$ in P-tree $T$?\\
+	{\sc DomTest}: is it that $o \succeq_T o'$ in P-tree $T$?\\
 	{\sc OptTest}: is outcome $o$ optimal w.r.t $T$?\\
 	{\sc OptProp}: is there an optimal outcome $o$ w.r.t $T$ st $o \models \alpha$?
 	
@@ -727,14 +780,18 @@
 			\hline
 			LP-tree & P & P & P \\
 			\hline
-			\pbox{20cm}{ASO-rule/ \\ Poss-theory} & P & coNP-complete & $\deltap{2}$($P^{NP}$) \\
+			\pbox{20cm}{ASO-rule/ \\ Poss-theory} & P & coNP-c & $\deltap{2}$($P^{NP}$) \\
 	    \hline
-	    P-tree & P & coNP-complete\fn{The complement problem is reduced from the SAT problem.}
-				& $\deltap{2}$($P^{NP}$)-complete\fn{The problem is reduced from the Maximum Satisfying 
+	    P-tree & P & coNP-c\fn{The complement problem is reduced from the SAT problem.}
+				& $\deltap{2}$($P^{NP}$)-c\fn{The problem is reduced from the Maximum Satisfying 
 																					Assignment (MSA) problem.}\\
 			\hline
-			ASO-theory & P & coNP-complete & $\sigmap{2}$($NP^{NP}$)-complete \\
+			ASO-theory & P & coNP-c & $\sigmap{2}$($NP^{NP}$)-c \\
 	    \hline
+			%ACP-net & NP-hard & P & P \\
+	    %\hline
+			%CCP-net & PSPACE-c & PSPACE-c? & PSPACE-c? \\
+	    %\hline
 	  \end{tabular}
 
 		\caption{Computational complexity results}
