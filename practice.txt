@@ -46,3 +46,155 @@ This leaf represents the cluster of outcomes that sat the conj of all formulas l
 nodes along that path.
 Similarly, we compute and see the green leaf is the leaf of the green vacation.
 As the red leaf precedes the green one in the P-tree, we have that red is preferred to green.
+
+P6:
+In many cases where P-trees have special structures, they can be
+simplified and represented much more concisely.
+For instance, when every non-leaf node in a P-tree has identical
+subtrees, we can collapse this full representation into a
+linear order of nodes labeled by formulas.
+As the boxes lose their meaning of clusters of equiv outcomes,
+we eliminate them in the compact form.
+Although the boxes are not presented in the compact tree,
+we can still compute which cluster a given outcome belongs
+in polynomial time in the compact representation.
+We believe it's important to identify and define compactness
+of P-trees, not only because the obvious saving of space.
+But also, when eliciting P-trees from users, compact
+P-trees allow much fewer queries than its fully specified
+counterpart.
+
+P7:
+This is example we saw earlier.  Similarly, the full representation
+is equiv to this compact tree.
+
+P8:
+Let's look at a more general case.
+We see that phi2 has identical subtrees, thus, we can simplify
+by collapsing them into one subtree and draw a strict down
+edge connecting phi2 and this subtree.
+We can still keep the box for phi1, but for the sake of
+consistency, we remove all boxes.  But as previously discussed,
+computing the rank of an outcome among the clusters is easy.
+
+P9:
+Now let's define what is a compact P-tree.
+A compact P-tree is a tree where every node is labeled,
+because the boxes representing the clusters are gone.
+Each non-leaf node will have either two outgoing edges
+in case t's two subtrees are distinct, or one outgoing
+edge.  If this edge points to the left, it means
+that there are no further preferences in the right.
+If it points to the right, there are no further
+preferences in the left.
+The last case is when the edge is pointing straight
+down indicating t's two subtrees are identical.
+This is the case where we have significant savings.
+From this point forward, when I speak about
+P-trees, I refer to compact P-trees.
+
+P10:
+A relative of pref trees, LP-trees, was introduced by Booth
+et al. in 2010.  The language of LP-trees is similar with
+p-trees, in that both utilize the tree structure to
+specify relative importance of considerations.
+The difference is that in lp trees nodes are labeled by
+issues and preferences are specified in their conditional
+pref tables.
+Moreover, an lp tree describes a total order of outcomes.
+Our work showed that the pref tables in lp trees can be
+represented as boolean formulas.  Sometimes the formulas
+are singletons, while some other times they are larger
+formulas as the CPT grows.
+So we proved that LP-trees are special cases of p trees,
+and p trees are strictly more expressive than lp trees.
+
+P11:
+Another pref formalism that can specify compact pref
+rules over comb domains is the language of answer
+set optimization.
+ASO was introduced by Brewka, Niemela and T in 2003.
+Under its semantics, one can express a single ASO-rule
+specifying a total preorder over outcomes, or a set of
+ASO rules, for which we call an aso theory, to
+identify in general a partial preorder.
+We will look at these two aspects and see where
+p trees are in terms of relative expressivity.
+First, let's look at what an ASo rule is and how
+it induces total preorderings.
+An aso rule r of this form reads:
+among outcomes sating formula B, I prefer those
+that sat formula C1, to those that fal C1 but
+sat C2, to those that fal C1 and C2 but sat C3,
+and so forth.
+For outcomes that do not sat B in the first place,
+one way to interpret r, which we actually adopted
+in our paper, is that these outcomes are just as
+good as those sating B and C1, thus the most preferred
+wrt r.
+We showed that given any aso rule, we can build in
+poly time a p tree that preserves the total preorder
+induced by r.
+
+P12:
+What about the opposite direction? Can we embed any
+given p tree in an aso rule?
+We can, but with the cost that the size of the aso
+rule translation could be exponential in the size
+of the p tree.
+
+P13:
+But what if we allow multiple aso rules, or an
+aso theory?  What if we even allow ranks among
+aso rules?  The answer is yes, and we proved
+that one can rewrite any p tree as a small
+aso theory s.t. the total orderings are the same.
+
+P14:
+The final pref language we studied in this section
+is poss logic, discussed in Dubois, Lang and Prade's
+paper in 1991.
+As the semantics of poss logic and that of aso rules
+are very similar, we obtained similar results.
+That is, any poss logic theory can be easily embedded
+in a p tree.  Conversely, any p tree can be translated
+to a poss logic theory at the exponential cost.
+
+P15:
+To summarize the relative expressivity of our
+lexicographic model, p trees, we observe that
+lp trees are strictly less expressive than p trees,
+that aso rules and poss logic theories are less
+expressive than p trees, and that p trees are
+strictly less expressive than aso theories.
+
+P16:
+In our work, we studied three decision problems,
+dominance testing, optimality testing and
+optimality with property.
+The classic dominance testing problem is that
+given a p tree and two outcomes we want to
+decide if it is true that one is prefer to the
+other in the tree.
+For optimality test, we are given a p tree and
+one outcome and deciding if it is optimal in the tree.
+For the last one, we are again given a tree and
+some property represented by a formula alpha and
+asking if there exists an optimal outcome sating alpha.
+
+P17:
+We gave computational complexity results for these
+problems when given a p tree.
+Looking at this table of results for all the languages
+we examined, we can see that as the expressivity
+grows the complexities of these decision problems
+never decrease.
+
+P18:
+Looking into the future, we would like to relate
+lexicographic models with cp nets.
+We are also interesting in eliciting or learning
+compact p trees, then aggregating them
+by for example voting rules.
+That's all.  Now it's time for me to take questions.
+Thank you.

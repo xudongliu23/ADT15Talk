@@ -103,6 +103,9 @@
 \newcommand{\tit}[1]{\textit{#1}}
 \newcommand{\tbf}[1]{\textbf{#1}}
 
+\newcommand\subsetsim{\mathrel{%
+  \ooalign{\raise0.2ex\hbox{$\subset$}\cr\hidewidth\raise-0.8ex\hbox{\scalebox{0.9}{$\sim$}}\hidewidth\cr}}}
+
 \newcommand{\Fontalg}{\fontsize{7}{7.2}\selectfont}
 
 \newcommand{\frameT}[2]{\frame{\frametitle{#1} #2}}
@@ -159,19 +162,12 @@
 						}, or \tit{P-trees},
 					and formally introduce their \tit{compact} representations.
 		\item We relate P-trees to existing preference formalisms such as
-					\tit{lexicographic preference trees}\fn{
-						Booth, Chevaleyre, Lang, Mengin, and Sombattheera.
-						\tit{Learning conditionally lexicographic preference relations}, 2010.
-						} (\tit{LP-trees}), 
-					\tit{answer set optimization}\fn{
-						Brewka, Niemel¨a, and Truszczynski. \tit{Answer set optimization}, 2003.
-						} (\tit{ASO}) and \tit{possibilistic logic}\fn{
-						Dubois, Lang, and Prade.
-						\tit{A brief overview of possibilistic logic}, 1991.} (\tit{Poss-theories}).
+					\tit{lexicographic preference trees} (\tit{LP-trees}), 
+					\tit{answer set optimization} (\tit{ASO}) and \tit{possibilistic 
+					logic} (\tit{Poss-theories}).
 		\item We study decision problems in the setting of P-trees and obtain computational
 					complexity results.
 	\end{enumerate}
-
 }
 
 
@@ -266,6 +262,88 @@
 	\begin{center}
 		$\textcolor{red}{\neg x_1 \neg x_2x_3\neg x_4} \succ \textcolor{green}{x_1 \neg x_2x_3x_4}$
 	\end{center}
+}
+
+\frameT{Compact Representation of P-trees}{
+\begin{figure}[!ht]
+	\centering
+		\subfigure[Full]{
+		\centering
+		  \begin{tikzpicture}[->,>=stealth',
+  	     level 1/.style={sibling distance=4.3cm, level distance=28pt},
+  	     level 2/.style={sibling distance=2.2cm, level distance=28pt},
+  	     level 3/.style={sibling distance=1.0cm, level distance=28pt},
+  	     level 4/.style={sibling distance=0.5cm, level distance=28pt}]
+		    \node [main node,inner sep=1.7pt] (1){$\varphi_1$}
+		    child {node [main node,inner sep=1.7pt] (2) {$\varphi_2$}
+		      child {node [main node,inner sep=1.7pt] (3) {$\varphi_3$}
+		        child {node [main node,inner sep=1.7pt] (4) {$\varphi_4$}
+  	          child {node [rectangle,draw] (16) {}}
+  	          child {node [rectangle,draw] (17) {}}
+						}
+		        child {node [main node,inner sep=1.7pt] (5) {$\varphi_4$}
+  	          child {node [rectangle,draw] (18) {}}
+  	          child {node [rectangle,draw] (19) {}}
+						}
+					}
+		      child {node [main node,inner sep=1.7pt] (6) {$\varphi_3$}
+		        child {node [main node,inner sep=1.7pt] (7) {$\varphi_4$}
+  	          child {node [rectangle,draw] (20) {}}
+  	          child {node [rectangle,draw] (21) {}}
+						}
+		        child {node [main node,inner sep=1.7pt] (8) {$\varphi_4$}
+  	          child {node [rectangle,draw] (22) {}}
+  	          child {node [rectangle,draw] (23) {}}
+						}
+		      }
+				}
+		    child {node [main node,inner sep=1.7pt] (9) {$\varphi_2$}
+		      child {node [main node,inner sep=1.7pt] (10) {$\varphi_3$}
+		        child {node [main node,inner sep=1.7pt] (11) {$\varphi_4$}
+  	          child {node [rectangle,draw] (24) {}}
+  	          child {node [rectangle,draw] (25) {}}
+						}
+		        child {node [main node,inner sep=1.7pt] (12) {$\varphi_4$}
+  	          child {node [rectangle,draw] (26) {}}
+  	          child {node [rectangle,draw] (27) {}}
+						}
+					}
+		      child {node [main node,inner sep=1.7pt] (13) {$\varphi_3$}
+		        child {node [main node,inner sep=1.7pt] (14) {$\varphi_4$}
+  	          child {node [rectangle,draw] (28) {}}
+  	          child {node [rectangle,draw] (29) {}}
+						}
+		        child {node [main node,inner sep=1.7pt] (15) {$\varphi_4$}
+  	          child {node [rectangle,draw] (30) {}}
+  	          child {node [rectangle,draw] (31) {}}
+						}
+		      }
+				}
+				;
+		  \end{tikzpicture}
+		}%
+		\subfigure[Compact]{
+			\hspace{0.8cm}
+			\begin{tikzpicture}[->,>=stealth',
+  	     level 1/.style={sibling distance=4.3cm, level distance=28pt},
+  	     level 2/.style={sibling distance=2.2cm, level distance=28pt},
+  	     level 3/.style={sibling distance=1.0cm, level distance=28pt},
+  	     level 4/.style={sibling distance=0.5cm, level distance=28pt}]
+			  \node [main node,inner sep=1.7pt] (1){$\varphi_1$}
+			    child {node [main node,inner sep=1.7pt] (3) {$\varphi_2$}
+						child {node [main node,inner sep=1.7pt] (4) {$\varphi_3$}
+							child {node [main node,inner sep=1.7pt] (5) {$\varphi_4$}
+              	child {node [rectangle] (6) {} edge from parent[draw=none]}
+							}
+						}
+					};
+			\end{tikzpicture}
+			\hspace{0.8cm}
+		}
+  \caption{Compact P-trees}
+%	\vspace{-0.2cm}
+  \label{fig:LPT_full}
+\end{figure}
 }
 
 \frameT{Compact Representation of P-trees}{
@@ -372,8 +450,8 @@
 		\item every node is labeled with a Boolean formula over $\cI$, and
 	  \item every non-leaf node $t$ labeled with $\varphi$ has either
 	        two outgoing edges (Figure (a)), or one 
-	    		outgoing edge pointing straight-down (Figure (b)),
-					left (Figure (c)), or right (Figure (d)).
+	    		outgoing edge pointing left (Figure (b)),
+					right (Figure (c)), or straight-down (Figure (d)).
 	\end{enumerate}
 	
 	\begin{figure}[ht!]
@@ -385,7 +463,10 @@
 
 
 \subsection{Relating Other Preference Formalisms}
-\frameT{From LP-Trees to P-Trees}{
+\frameT{From LP-Trees\fn{
+	Booth, Chevaleyre, Lang, Mengin, and Sombattheera.
+	\tit{Learning conditionally lexicographic preference relations}, 2010.
+} to P-Trees}{
 	\begin{figure}[!ht]
 		\centering
 	  \subfigure[An LP-tree $L$]{
@@ -497,7 +578,9 @@
 %	\end{center}
 %}
 
-\frameT{From ASO-Rules to P-Trees}{
+\frameT{From ASO-Rules\fn{
+	Brewka, Niemel¨a, and Truszczynski. \tit{Answer set optimization}, 2003.
+} to P-Trees}{
 	From the ASO-rule $r$, we build a P-tree $T_r$,
 	where $\varphi_1 = \neg B \vee C_1$,
 	$\varphi_i =C_i$ ($2 \leq i \leq m$).
@@ -621,7 +704,9 @@
 %}
 %
 
-\frameT{From P-trees to ASO-Theories}{
+\frameT{From P-trees to ASO-Theories\fn{
+	Brewka, Niemel¨a, and Truszczynski. \tit{Answer set optimization}, 2003.
+}}{
 	\begin{figure}
 	  \centering
 	  \subfigure[P-tree $T$]{
@@ -685,7 +770,10 @@
 %	\end{enumerate}
 %}
 
-\frameT{From Poss-theories to P-Trees}{
+\frameT{From Poss-theories\fn{
+						Dubois, Lang, and Prade.
+						\tit{A brief overview of possibilistic logic}, 1991.
+} to P-Trees}{
 	Given a possibilistic logic theory $\Pi$, we now build a P-tree $T_\Pi$, 
 	where $\varphi_1=\bigwedge_{\substack{1\leq i \leq m}} \phi_i$, 
 	$\varphi_2=\bigwedge_{\substack{1\leq i \leq m-1}} \phi_i \wedge \neg \phi_m$,
@@ -729,7 +817,7 @@
 
 \frameT{Relative Expressivity of Preference Languages}{
 	\begin{center}
-		Poss-theories = ASO-rules $\subset$ \dual{LP-trees/\dual{$\cap$/P-trees}} $\subset$ ASO-theories
+		Poss-theories = ASO-rules $\subsetsim$ \dual{LP-trees/\dual{$\cap$/P-trees}} $\subset$ ASO-theories
 	\end{center}
 }
 
@@ -774,8 +862,8 @@
 			\hline
 			\pbox{20cm}{ASO-rule/ \\ Poss-theory} & P & coNP-c & $\deltap{2}$($P^{NP}$) \\
 	    \hline
-	    P-tree & P & coNP-c\fn{The complement problem is reduced from the SAT problem.}
-				& $\deltap{2}$($P^{NP}$)-c\fn{The problem is reduced from the Maximum Satisfying 
+	    \tbf{P-tree} & \tbf{P} & \tbf{coNP-c}\fn{The complement problem is reduced from the SAT problem.}
+				& \tbf{$\deltap{2}$($P^{NP}$)-c}\fn{The problem is reduced from the Maximum Satisfying 
 																					Assignment (MSA) problem.}\\
 			\hline
 			ASO-theory & P & coNP-c & $\sigmap{2}$($NP^{NP}$)-c \\
